@@ -1,8 +1,10 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 //Run general shell functions
 int run(char *);
 
 //Specialized functions
-int run_ls(char *);
 int run_cd(char *);
 int run_exit();
 
