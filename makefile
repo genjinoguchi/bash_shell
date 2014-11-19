@@ -1,5 +1,5 @@
 all: main.o gdigenji.o
-	gcc -o supershell main.o gdigenji.o
+	gcc -o we.out main.o gdigenji.o
 
 main.o: main.c bashell.h
 	gcc -c main.c
