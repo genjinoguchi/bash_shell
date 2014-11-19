@@ -1,12 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <errno.h>
+
+#include <string.h>
+
 int main() {
-  int color;
+  	//printf("Colors: \x1b[0;36;45m Hurrrrrrrr.\n");
 
-  printf("Colors: \x1b[0;36;45m Hurrrrrrrr.\n");
-
-
+	execlp("ls","ls",NULL);
+	printf("hurr\n");
+	execlp("ls","ls",NULL);		
+	if (errno) {
+		printf("Error : %s",strerror(errno));
+	}
 }
 /*
 0: reset colors/style
