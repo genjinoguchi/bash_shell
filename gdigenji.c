@@ -18,14 +18,17 @@ int run_exec(char * cmd) {
 	int f;
 	int *i;
 
-	printf("hurr");
+	printf("hurr\n");
 
 	f = fork();
 	if (!f) {
 		printf("Running execlpc\n");
-		cmd[strlen(cmd)-1]=NULL;
-		printf("execlp(%s,%s,NULL);",cmd,cmd);
-		execlp(cmd, cmd, NULL); //No parsing yet. Just for testing.
+		char * cmdname;
+		cmd = strsep(&cmd,"\n");
+		cmdname = strsep(&cmd," ");
+		
+		printf("execlp(%s,%s,%s,NULL);",cmdname,cmdname,cmd);
+		execlp(cmdname, cmdname,cmd, NULL); //No parsing yet. Just for testing.
 		printf("Done execing\n");
 		exit(0);
 	} else {
