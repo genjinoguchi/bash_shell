@@ -6,3 +6,6 @@ main.o: main.c bashell.h
 
 gdigenji.o: gdigenji.c bashell.h
 	gcc -c gdigenji.c
+
+clean:
+	rm *.o
