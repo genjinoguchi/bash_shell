@@ -5,6 +5,7 @@
 #include <signal.h>
 #include <fcntl.h>
 
+#include <string.h>
 #include "bashell.h"
 
 //it is all genji's fault
