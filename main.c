@@ -22,7 +22,15 @@ int main() {
 
   signal(SIGINT, sighandler);
   while(1){
-	printf("cash$:  ");
+    char * cwd;
+    getcwd(cwd,256);
+    char * sepcwd;
+    while(cwd){
+      sepcwd = strsep(&cwd,"/");
+    }
+    
+    
+    printf("%s$:  ",sepcwd);
 	fgets(input,sizeof(input),stdin);
 	printf("you put in: %s",input);
 	if(errno) {
