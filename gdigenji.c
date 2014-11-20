@@ -22,12 +22,13 @@ int run_exec(char * cmd) {
 	f = fork();
 	if (!f) {
 		printf("Running execlpc\n");
+		cmd[strlen(cmd)-1]=NULL;
 		printf("execlp(%s,%s,NULL);",cmd,cmd);
 		execlp(cmd, cmd, NULL); //No parsing yet. Just for testing.
 		printf("Done execing\n");
+		exit(0);
 	} else {
 		int status;
 		waitpid(f,&status,0);
-		printf("\ncash$:  ");
 	}
 }
