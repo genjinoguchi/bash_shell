@@ -12,7 +12,7 @@ int store_cmd(char * cmd) {
 
 	fd = open("cmds", 0_WRONLY | 0_CREAT);
 	if (fd) {
-		//store the function
+	//Store the function.	
 	} else {
 		printf("Error: %s\n",strerror(errno));
 	}
