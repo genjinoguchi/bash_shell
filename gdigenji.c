@@ -11,7 +11,26 @@
 //it is all genji's fault
 
 int run(char * cmd) {
-	run_exec(cmd);
+  if (check_cd(cmd)){
+    run_cd(cmd);
+  }
+
+  run_exec(cmd);
+}
+
+int check_cd(char * cmd){
+  char * cmdname;
+  cmd = strsep(&cmd,"\n");
+  cmdname = strsep(&cmd," ");
+  
+  if (!(strcmp(cmdname,"cd"))){
+    return 1;
+  }
+  return 0;
+}
+
+int run_cd(char * cmd){
+  printf("cd should be running now\n");
 }
 
 int run_exec(char * cmd) {
@@ -19,16 +38,35 @@ int run_exec(char * cmd) {
 	int *i;
 
 	printf("hurr\n");
-
+	
 	f = fork();
 	if (!f) {
-		printf("Running execlpc\n");
+		printf("Running execlpc\n\n");
 		char * cmdname;
 		cmd = strsep(&cmd,"\n");
 		cmdname = strsep(&cmd," ");
-		
-		printf("execlp(%s,%s,%s,NULL);",cmdname,cmdname,cmd);
-		execlp(cmdname, cmdname,cmd, NULL); //No parsing yet. Just for testing.
+
+		char * args[256];
+		args[0] = cmdname;
+		int x;
+		x = 1;
+		while (cmd){
+		  char * arg = strsep(&cmd," ");
+		  args[x] = arg;
+		  x++;
+		}
+		args[x] = NULL;
+		/*
+		printf("---printing array---\n");
+		x = 0;
+		while (args[x]){
+		  printf("%d: %s\n",x,args[0]);
+		  x++;
+		}
+		printf("---endprint---\n");
+		*///debugging the array
+		//printf("execvp(%s,array)",cmdname);
+		execvp(cmdname,args);
 		printf("Done execing\n");
 		exit(0);
 	} else {
@@ -36,3 +74,5 @@ int run_exec(char * cmd) {
 		waitpid(f,&status,0);
 	}
 }
+
+
