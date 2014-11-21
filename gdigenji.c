@@ -13,7 +13,9 @@
 int run(char * cmd) {
   if (check_cd(cmd)){
     run_cd(cmd);
+    return 0;
   }
+  
 
   run_exec(cmd);
 }
@@ -22,7 +24,7 @@ int check_cd(char * cmd){
   char * cmdname;
   cmd = strsep(&cmd,"\n");
   cmdname = strsep(&cmd," ");
-  
+   
   if (!(strcmp(cmdname,"cd"))){
     return 1;
   }
@@ -30,6 +32,16 @@ int check_cd(char * cmd){
 }
 
 int run_cd(char * cmd){
+  char * cmdname;
+  cmd = strsep(&cmd,"\n");
+  cmdname = strsep(&cmd," ");
+  //now cmd has the path for cd 
+  chdir(cmd);
+
+  char newdir[256];
+  getcwd(newdir,sizeof(newdir));
+  printf("Current dir: %s\n",newdir);
+  
   printf("cd should be running now\n");
 }
 
