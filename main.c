@@ -32,11 +32,11 @@ int main() {
     
     printf("%s$:  ",sepcwd);
 	fgets(input,sizeof(input),stdin);
-	printf("you put in: %s",input);
+	//printf("you put in: %s",input);
 	if(errno) {
 		printf("errno:%s\n",strerror(errno));
 	} else {
-		printf("Running things.\n");
+	  //printf("Running things.\n");
 		run(input);
 	}
   }

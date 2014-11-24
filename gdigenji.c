@@ -49,11 +49,11 @@ int run_exec(char * cmd) {
 	int f;
 	int *i;
 
-	printf("hurr\n");
+	//printf("hurr\n");
 	
 	f = fork();
 	if (!f) {
-		printf("Running execlpc\n\n");
+	  //printf("Running execlpc\n\n");
 		char * cmdname;
 		cmd = strsep(&cmd,"\n");
 		cmdname = strsep(&cmd," ");
