@@ -22,10 +22,13 @@ int main() {
 
   signal(SIGINT, sighandler);
   while(1){
+    //printf("maybeit'sthisshit\n");
     char * cwd;
     getcwd(cwd,256);
     char * sepcwd;
+    printf("%s\n",cwd);
     while(cwd){
+      //printf("wtfisthisshit\n");
       sepcwd = strsep(&cwd,"/");
     }
     
