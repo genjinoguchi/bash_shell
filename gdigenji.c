@@ -13,12 +13,23 @@
 int run(char * cmd) {
   if (check_cd(cmd)){
     run_cd(cmd);
-    return 0;
-  }
-  
+  } else if (check 
 
   run_exec(cmd);
 }
+
+int process(char * cmd) {
+	//Parsing things here
+	
+	do {
+		char * cmd1 = fullstrsep( &cmd, "||"); 
+}
+int run_chain (char * cmd, char * chain) {
+	
+
+}
+
+
 
 int check_cd(char * cmd){
   char * cmdname;

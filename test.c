@@ -9,6 +9,21 @@
 #include <string.h>
 
 int main() {
+
+	char * test;
+	char * test2;
+
+	test = (char *)malloc(256 * sizeof(char));
+	strcpy(test, "hello world | goodbye world!");
+	
+
+	test2 = strsep( &test, "|");
+
+	printf("test: %s\t, test2: %s\n",test, test2);	
+
+
+
+	/*
   	//printf("Colors: \x1b[0;36;45m Hurrrrrrrr.\n");
 
 	execlp("ls","ls",NULL);
@@ -17,6 +32,7 @@ int main() {
 	if (errno) {
 		printf("Error : %s",strerror(errno));
 	}
+	*/
 }
 /*
 0: reset colors/style
