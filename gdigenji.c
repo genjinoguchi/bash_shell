@@ -11,11 +11,13 @@
 //it is all genji's fault
 
 int run(char * cmd) {
+  
   if (check_cd(cmd)){
+    //printf("itgoeshere\n\n\n\n");
     run_cd(cmd);
   } else if (check 
 
-  run_exec(cmd);
+ 	 run_exec(cmd);
 }
 
 int process(char * cmd) {
@@ -32,20 +34,29 @@ int run_chain (char * cmd, char * chain) {
 
 
 int check_cd(char * cmd){
+  //printf("cmd in check_cd:%s\n",cmd);
+  char * cmdcopy;
+  strncpy(cmdcopy,cmd,sizeof(cmd));
+  
   char * cmdname;
-  cmd = strsep(&cmd,"\n");
-  cmdname = strsep(&cmd," ");
-   
+  cmdcopy = strsep(&cmdcopy,"\n");
+  cmdname = strsep(&cmdcopy," ");
+
+  //printf("cmd after strsep cmdcopy: %s\n\n",cmd);
+  
   if (!(strcmp(cmdname,"cd"))){
     return 1;
+  } else {
+    return 0;
   }
-  return 0;
 }
 
 int run_cd(char * cmd){
+  //printf("cmd before strsep: %s\n",cmd);
   char * cmdname;
   cmd = strsep(&cmd,"\n");
   cmdname = strsep(&cmd," ");
+  //printf("cmd after strsep: %s\n",cmd);
   //now cmd has the path for cd 
   chdir(cmd);
 
